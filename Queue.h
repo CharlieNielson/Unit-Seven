@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <ostream>
+#include <ostream>
 using namespace std;
 
 class Queue {
@@ -11,6 +11,7 @@ class Queue {
         void remove(); // Removes the item at the front of the queue
         string peek(string); // Returns the value in the front of the queue (without removing)
         //ostream &operator << (ostream &out, const Queue &s); //Overloads the extraction operator to display the queue
+        void present();//My own little function to display the entirety of the data stored.
     private:
         //Hello!
         string thing[0];
@@ -43,4 +44,15 @@ void Queue::remove() {
 
 string Queue::peek(string useless) {
     return thing[0];
+}
+
+void Queue::present() {
+    cout << "(";
+    for (int i = 0; i < length; i++) {
+        cout << thing[i];
+        if (i < length - 1) {
+            cout << ", ";
+        }
+    }
+    cout << ")" << endl;
 }
