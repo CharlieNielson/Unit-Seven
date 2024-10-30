@@ -1,23 +1,46 @@
 #include <iostream>
+//#include <ostream>
 using namespace std;
 
-//Constructs an empty queue
-Queue();  
+class Queue {
+    public:
+        Queue(); //Constructs an empty queue
+        ~Queue(); //Destructor to free up memory
+        bool isEmpty(); //Returns true if the stack is empty
+        void add(string data); //Adds an item to the end of the queue
+        void remove(); // Removes the item at the front of the queue
+        string peek(string); // Returns the value in the front of the queue (without removing)
+        //ostream &operator << (ostream &out, const Queue &s); //Overloads the extraction operator to display the queue
+    private:
+        //Hello!
+        string thing[0];
+        int length;
+};
 
-//Destructor to free up memory
-~Queue(); 
+Queue::Queue() {
+    length = 0;
+}
 
-//Returns true if the stack is empty
-bool isEmpty(); 
+bool Queue::isEmpty() {
+    if (length > 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
-//Adds an item to the end of the queue
-void add(string data); 
+void Queue::add(string data) {
+    thing[length] = data;
+    length++;
+}
 
-// Removes the item at the front of the queue
-void remove(); 
+void Queue::remove() {
+    for (int i = 0; i < length; i++) {
+        thing[i] = thing[i + 1];
+    };
+    length--;
+}
 
-// Returns the value in the front of the queue (without removing)
-string peek(); 
-
-//Overloads the extraction operator to display the queue
-ostream &operator << (ostream &out, const Queue &s); 
+string Queue::peek(string useless) {
+    return thing[0];
+}
